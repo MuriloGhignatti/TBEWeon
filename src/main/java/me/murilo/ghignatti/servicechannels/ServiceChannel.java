@@ -4,7 +4,8 @@ import java.sql.Timestamp;
 import java.util.UUID;
 
 /**
- * Abstract ServiceChannel
+ * For more complex projects an interface should be used
+ * since abstract classes can lead to complex hierarchical architectures
  */
 public abstract class ServiceChannel {
     
@@ -24,6 +25,14 @@ public abstract class ServiceChannel {
     public ServiceChannel(String source, String target){
         this(UUID.randomUUID(), source, target,
                 new Timestamp(System.currentTimeMillis()));
+    }
+
+    public abstract void consume();
+
+    abstract String getChannelType();
+
+    public UUID getId(){
+        return this.id;
     }
 
     public String getSource() {
@@ -48,5 +57,14 @@ public abstract class ServiceChannel {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder('[');
+        sb.append(this.id).append("] - ").append(getChannelType())
+            .append(" channel | ").append(this.source)
+            .append(" is connecting to ").append(this.target);
+        return sb.toString();
     }
 }

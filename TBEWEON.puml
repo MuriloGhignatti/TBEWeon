@@ -1,0 +1,20 @@
+@startuml
+abstract class ServiceChannel {
+    -UUID id
+    -String source
+    -String target
+    -Timestamp timestamp
+
+    +ServiceChannel(UUID id, String source, String target, Timestamp timestamp)
+    +ServiceChannel(String source, String target)
+    +UUID getId()
+}
+
+abstract class alias {
+    +{static} int PUBLIC_CLASS_VARIABLE
+    -string privateVariable
+    ~void packagePrivateMethod()
+    #{abstract} char protectedMethod(int param)
+}
+
+@enduml
