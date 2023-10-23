@@ -29,7 +29,7 @@ consumer.threads=12
 consumer.pollTimeoutMilliSeconds=200
 ```
 
-`pollTimeoutMilliSeconds` is the amount of time a consumer will be waiting for something be put on the queue before "giving up".
+> ℹ️ `pollTimeoutMilliSeconds` is the amount of time a consumer will be waiting for something be put on the queue before "giving up".
 
 ### Executing program
 
