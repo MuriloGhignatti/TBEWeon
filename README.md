@@ -10,9 +10,12 @@ This is a simple project for simulating multithreaded producers and consumers
 
 ### Dependencies
 
-Tested with Maven 3.9.3
+This was tested with the below versions of maven and java, other versions may work but are not guarantied.
 
-### Installing
+* Maven 3.9.3
+* Java 17.0.8
+
+### Compiling
 
 Simply running `mvn clean install` should be enough for compiling and testing the project.
 
@@ -34,9 +37,9 @@ consumer.pollTimeoutMilliSeconds=200
 ### Executing program
 
 ### Running
-* Compile the program
+* [Compile](#compiling) the program
 * Run it with `java -jar TBEWeon-1.0.0.jar`, this will run using the default configuration as showed above
-* Or Run it with `java -jar TBEWeon-1.0.0.jar <full path of config.properties>`, this will use your own properties for running the program
+* Or Run it with `java -jar TBEWeon-1.0.0.jar <full path of your own config.properties>`, this will use your own properties for running the program
 
 > ℹ️ The produced artifact can be found inside `TBWeon/target/TBEWeon-1.0.0.jar`
 
