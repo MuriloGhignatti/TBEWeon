@@ -7,7 +7,7 @@ public class Email extends ServiceChannel {
     }
 
     @Override
-    void consume() {
+    public void consume() {
         System.out.println(this.toString());
     }
 
