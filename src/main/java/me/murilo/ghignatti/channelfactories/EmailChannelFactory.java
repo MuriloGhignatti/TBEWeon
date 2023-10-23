@@ -8,6 +8,17 @@ import me.murilo.ghignatti.servicechannels.ServiceChannel;
  */
 public class EmailChannelFactory extends ChannelFactory{
 
+    private static EmailChannelFactory instance;
+
+    private EmailChannelFactory(){}
+
+    public static EmailChannelFactory getInstance(){
+        if (instance == null){
+            instance = new EmailChannelFactory();
+        }
+        return instance;
+    }
+
     @Override
     public ServiceChannel produceServiceChannel() {
         return new Email(genEmail(), genEmail());

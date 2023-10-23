@@ -8,6 +8,17 @@ import me.murilo.ghignatti.servicechannels.Voice;
  */
 public class VoiceChannelFactory extends ChannelFactory{
 
+    private static VoiceChannelFactory instance;
+
+    private VoiceChannelFactory(){}
+
+    public static VoiceChannelFactory getInstance(){
+        if (instance == null){
+            instance = new VoiceChannelFactory();
+        }
+        return instance;
+    }
+
     @Override
     public ServiceChannel produceServiceChannel() {
         return new Voice(genName(), genName());
