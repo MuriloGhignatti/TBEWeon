@@ -35,8 +35,10 @@ consumer.pollTimeoutMilliSeconds=200
 
 ### Running
 * Compile the program
-* Run it with `java -jar tbeweon.jar`, this will run using the default configuration as showed above
-* Or Run it with `java -jar tbeweon.jar <full path of config.properties>`, this will use your own properties for running the program
+* Run it with `java -jar TBEWeon-1.0.0.jar`, this will run using the default configuration as showed above
+* Or Run it with `java -jar TBEWeon-1.0.0.jar <full path of config.properties>`, this will use your own properties for running the program
+
+> ℹ️ The produced artifact can be found inside `TBWeon/target/TBEWeon-1.0.0.jar`
 
 ## Authors
 
@@ -44,4 +46,4 @@ consumer.pollTimeoutMilliSeconds=200
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the MIT License - see the [license file](LICENSE.md) for details
