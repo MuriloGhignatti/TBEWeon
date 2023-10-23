@@ -34,12 +34,12 @@ public class App {
         int voiceProducerThreads = getIntProperty("producers.voice.threads");
 
         int maxProducerTime = getIntProperty("producer.maxSecondsRunning");
-        int producerDelay = getIntProperty("producer.miliSecondsDelay");
+        int producerDelay = getIntProperty("producer.milliSecondsDelay");
 
         int producerUsedThreads = chatProducerThreads + emailProducerThreads + voiceProducerThreads;
 
         int consumerThreads = getIntProperty("consumer.threads");
-        int consumerWaitPollTimeout = getIntProperty("consumer.pollTimeoutMiliSeconds");
+        int consumerWaitPollTimeout = getIntProperty("consumer.pollTimeoutMilliSeconds");
 
         validateAmmountOfThreads(cores, producerUsedThreads, consumerThreads);
 
