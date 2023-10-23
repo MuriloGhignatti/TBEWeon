@@ -4,8 +4,8 @@ import me.murilo.ghignatti.servicechannels.ServiceChannel;
 
 public interface OpenChannelDAO {
 
-    public void openChannel(ServiceChannel channel);
+    public void addOpenChannel(ServiceChannel channel);
 
-    public ServiceChannel closeChannel();
+    public ServiceChannel getOpenChannel(int timeout);
 
 }

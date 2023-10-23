@@ -2,6 +2,7 @@ package me.murilo.ghignatti.data;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 import me.murilo.ghignatti.servicechannels.ServiceChannel;
 
@@ -13,7 +14,7 @@ public class OpenChannelDAOImpl implements OpenChannelDAO {
     private int produced;
     private int consumed;
 
-    public static OpenChannelDAOImpl getInstance(){
+    public static OpenChannelDAOImpl getInstance() {
         if (instance == null) {
             instance = new OpenChannelDAOImpl();
         }
@@ -21,37 +22,32 @@ public class OpenChannelDAOImpl implements OpenChannelDAO {
         return instance;
     }
 
-    private OpenChannelDAOImpl(){
+    private OpenChannelDAOImpl() {
         this.createdServicesChannels = new LinkedBlockingQueue<>();
         this.produced = 0;
         this.consumed = 0;
     }
 
     @Override
-    public void openChannel(ServiceChannel channel){
+    public void addOpenChannel(ServiceChannel channel) {
         try {
             createdServicesChannels.put(channel);
             ++produced;
         } catch (InterruptedException e) {
             System.err.println("Could not insert channel{" + channel.getId() +
-                "} at the serviceChannelQueue");
+                    "} at the serviceChannelQueue");
         }
     }
 
     @Override
-    public ServiceChannel closeChannel(){
-        ServiceChannel retrievedChannel = null;
+    public ServiceChannel getOpenChannel(int timeout) {
         try {
-            retrievedChannel = createdServicesChannels.take();
+            ServiceChannel retrievedChannel = createdServicesChannels.poll(timeout, TimeUnit.MILLISECONDS);
+            if (retrievedChannel != null)
+                ++consumed;
             return retrievedChannel;
         } catch (InterruptedException e) {
-            System.err.println("Error retrieving head of queue");
             return null;
-        }
-        finally {
-            if (retrievedChannel != null) {
-               ++consumed; 
-            }
         }
     }
 
