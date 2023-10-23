@@ -4,7 +4,7 @@ import me.murilo.ghignatti.servicechannels.Email;
 import me.murilo.ghignatti.servicechannels.ServiceChannel;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class EmailChannelFactoryTest {
 
