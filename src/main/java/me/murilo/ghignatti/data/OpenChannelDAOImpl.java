@@ -55,6 +55,11 @@ public class OpenChannelDAOImpl implements OpenChannelDAO {
         return produced;
     }
 
+    @Override
+    public boolean isQueueEmpty() {
+        return this.createdServicesChannels.isEmpty();
+    }
+
     public void setProduced(int produced) {
         this.produced = produced;
     }
