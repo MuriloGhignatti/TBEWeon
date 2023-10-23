@@ -28,14 +28,22 @@ class OpenChannelDAOImplTest {
     @Test
     void addOpenChannel() {
         assertTrue(dao.isQueueEmpty());
-        dao.addOpenChannel(ChatChannelFactory.getInstance().produceServiceChannel());
+        try {
+            dao.addOpenChannel(ChatChannelFactory.getInstance().produceServiceChannel());
+        } catch (InterruptedException e) {
+            fail();
+        }
         assertFalse(dao.isQueueEmpty());
     }
 
     @Test
     void getOpenChannel() {
         assertTrue(dao.isQueueEmpty());
-        dao.addOpenChannel(ChatChannelFactory.getInstance().produceServiceChannel());
+        try {
+            dao.addOpenChannel(ChatChannelFactory.getInstance().produceServiceChannel());
+        } catch (InterruptedException e) {
+            fail();
+        }
         dao.getOpenChannel(1);
         assertTrue(dao.isQueueEmpty());
     }
@@ -44,7 +52,11 @@ class OpenChannelDAOImplTest {
     void getProduced() {
         assertEquals(0, dao.getProduced());
         assertEquals(0, dao.getConsumed());
-        dao.addOpenChannel(ChatChannelFactory.getInstance().produceServiceChannel());
+        try {
+            dao.addOpenChannel(ChatChannelFactory.getInstance().produceServiceChannel());
+        } catch (InterruptedException e) {
+            fail();
+        }
         assertEquals(1, dao.getProduced());
         assertEquals(0, dao.getConsumed());
     }
@@ -53,7 +65,11 @@ class OpenChannelDAOImplTest {
     void getConsumed() {
         assertEquals(0, dao.getProduced());
         assertEquals(0, dao.getConsumed());
-        dao.addOpenChannel(ChatChannelFactory.getInstance().produceServiceChannel());
+        try {
+            dao.addOpenChannel(ChatChannelFactory.getInstance().produceServiceChannel());
+        } catch (InterruptedException e) {
+            fail();
+        }
         dao.getOpenChannel(1);
         assertEquals(1, dao.getProduced());
         assertEquals(1, dao.getConsumed());

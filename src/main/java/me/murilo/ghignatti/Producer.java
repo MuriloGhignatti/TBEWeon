@@ -21,10 +21,14 @@ public class Producer implements Callable<Void> {
     }
 
     @Override
-    public Void call() throws Exception {
+    public Void call() {
         while (true) {
-            dao.addOpenChannel(factory.produceServiceChannel());
-            Thread.sleep(delay);
+            try {
+                dao.addOpenChannel(factory.produceServiceChannel());
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                return null;
+            }
         }
     }
 }

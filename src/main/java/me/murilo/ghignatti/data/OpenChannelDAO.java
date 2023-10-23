@@ -4,7 +4,7 @@ import me.murilo.ghignatti.servicechannels.ServiceChannel;
 
 public interface OpenChannelDAO {
 
-    void addOpenChannel(ServiceChannel channel);
+    void addOpenChannel(ServiceChannel channel) throws InterruptedException;
 
     ServiceChannel getOpenChannel(int timeout);
 

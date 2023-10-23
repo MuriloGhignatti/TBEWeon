@@ -29,14 +29,9 @@ public class OpenChannelDAOImpl implements OpenChannelDAO {
     }
 
     @Override
-    public void addOpenChannel(ServiceChannel channel) {
-        try {
-            createdServicesChannels.put(channel);
-            ++produced;
-        } catch (InterruptedException e) {
-            System.err.println("Could not insert channel{" + channel.getId() +
-                    "} at the serviceChannelQueue");
-        }
+    public void addOpenChannel(ServiceChannel channel) throws InterruptedException {
+        createdServicesChannels.put(channel);
+        ++produced;
     }
 
     @Override
