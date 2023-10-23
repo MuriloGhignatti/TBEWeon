@@ -5,6 +5,8 @@
 .project
 .settings/
 target/
+.idea
+TBEWeon.iml
 
 ### Java ###
 # Compiled class file
